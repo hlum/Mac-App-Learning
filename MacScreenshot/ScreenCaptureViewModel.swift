@@ -13,10 +13,10 @@ class ScreenCaptureViewModel {
     
     var images:[NSImage] = []
     
-    func takeScreenshot(){
+    func takeScreenshot(for type: ScreenshotTypes){
         let task = Process()
         task.executableURL = URL(fileURLWithPath: "/usr/sbin/screencapture")
-        task.arguments = ["-cw"] //copy , window
+        task.arguments = type.processArguments
         do {
             try task.run()
             task.waitUntilExit()
@@ -36,3 +36,32 @@ class ScreenCaptureViewModel {
         return NSImage(pasteboard: NSPasteboard.general)
     }
 }
+
+enum ScreenshotTypes {
+    case full
+    case window
+    case area
+    
+    var description: String {
+        switch self {
+        case .full:
+            return "Make a full screenshot"
+        case .window:
+            return "Make a window screenshot"
+        case .area:
+            return "Make an area screenshot"
+        }
+    }
+    
+    var processArguments: [String] {
+        switch self {
+        case .full:
+            ["-c"]
+        case .window:
+            ["-cw"]
+        case .area:
+            ["-cs"]
+        }
+    }
+}
+

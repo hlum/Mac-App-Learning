@@ -27,14 +27,24 @@ struct ContentView: View {
                     }
                 }
             }
-            
-            Button {
-                vm.takeScreenshot()
-            } label: {
-                Text("Make a screenshot")
+            HStack {
+                screenshotBtn(for: .area)
+                screenshotBtn(for: .full)
+                screenshotBtn(for: .window)
             }
+           
         }
         .padding()
+    }
+    
+    @ViewBuilder
+    private func screenshotBtn(for type: ScreenshotTypes) -> some View {
+        Button {
+            vm.takeScreenshot(for: type)
+        } label: {
+            Text(type.description)
+        }
+
     }
 }
 
