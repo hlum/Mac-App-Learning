@@ -21,6 +21,9 @@ struct ContentView: View {
                         Image(nsImage: image)
                             .resizable()
                             .scaledToFit()
+                            .onDrag {
+                                NSItemProvider(object: image)
+                            }
                     }
                 }
             }
