@@ -13,5 +13,10 @@ struct MacScreenshotApp: App {
         WindowGroup {
             ContentView()
         }
+        
+        // Set the setting View to the macOs setting btn in the bar
+        Settings {
+            SettingView()
+        }
     }
 }
