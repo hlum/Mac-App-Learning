@@ -7,11 +7,17 @@
 
 import SwiftUI
 import Foundation
+import KeyboardShortcuts
 
 @Observable
 class ScreenCaptureViewModel {
     
     var images:[NSImage] = []
+    
+    init() {
+        // Add listener to key presses
+        addKeyPressedListener()
+    }
     
     func takeScreenshot(for type: ScreenshotTypes){
         let task = Process()
@@ -34,6 +40,21 @@ class ScreenCaptureViewModel {
         
         // Take out the image from the paste board
         return NSImage(pasteboard: NSPasteboard.general)
+    }
+    
+    private func addKeyPressedListener() {
+        // Each closure will get called when that specific key pressed
+        KeyboardShortcuts.onKeyUp(for: .screenshotCaptureArea) { [weak self] in
+            self?.takeScreenshot(for: .area)
+        }
+        
+        KeyboardShortcuts.onKeyUp(for: .screenshotCaptureFull) { [weak self] in
+            self?.takeScreenshot(for: .full)
+        }
+        
+        KeyboardShortcuts.onKeyUp(for: .screenshotCaptureWindow) { [weak self] in
+            self?.takeScreenshot(for: .window)
+        }
     }
 }
 
