@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var vm = ScreenCaptureViewModel()
+    @State var vm: ScreenCaptureViewModel
     let gridItem: [GridItem] = [
         GridItem(.adaptive(minimum: 200, maximum: 300))
     ]
@@ -49,5 +49,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(vm: ScreenCaptureViewModel())
 }
