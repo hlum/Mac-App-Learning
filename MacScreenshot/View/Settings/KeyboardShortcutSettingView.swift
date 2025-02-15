@@ -16,7 +16,6 @@ struct KeyboardShortcutSettingView: View {
             KeyboardShortcuts.Recorder("Screenshot Window: ", name: .screenshotCaptureWindow)
             KeyboardShortcuts.Recorder("Screenshot Full Screen: ", name: .screenshotCaptureFull)
         }
-        .padding()
     }
 }
 

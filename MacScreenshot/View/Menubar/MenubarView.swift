@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MenubarView.swift
 //  MacScreenshot
 //
 //  Created by Hlwan Aung Phyo on 2025/02/14.
@@ -7,17 +7,13 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    
+struct MenubarView: View {
     @State var vm: ScreenCaptureViewModel
-    let gridItem: [GridItem] = [
-        GridItem(.adaptive(minimum: 200, maximum: 300))
-    ]
     var body: some View {
-        VStack {
+        VStack(alignment: .leading,spacing: 10) {
             ScrollView {
-                LazyVGrid(columns: gridItem) {
-                    ForEach(vm.images, id: \.self) { image in
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 50, maximum: 100))]) {
+                    ForEach(vm.images, id:\.self) { image in
                         Image(nsImage: image)
                             .resizable()
                             .scaledToFit()
@@ -27,14 +23,18 @@ struct ContentView: View {
                     }
                 }
             }
+            .contentMargins(20)
+            
             HStack {
                 screenshotBtn(for: .area)
                 screenshotBtn(for: .full)
                 screenshotBtn(for: .window)
             }
-           
+            .labelStyle(.iconOnly)
+            .padding()
+            
         }
-        .padding()
+        .frame(maxHeight: 200)
     }
     
     @ViewBuilder
@@ -42,11 +42,11 @@ struct ContentView: View {
         Button {
             vm.takeScreenshot(for: type)
         } label: {
-            Text(type.description)
+            Label(type.description, systemImage: type.systemImage)
         }
     }
 }
 
 #Preview {
-    ContentView(vm: ScreenCaptureViewModel())
+    MenubarView(vm: ScreenCaptureViewModel())
 }

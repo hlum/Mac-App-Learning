@@ -11,10 +11,17 @@ import SwiftUI
 struct SettingView: View {
     var body: some View {
         TabView {
+            
             Tab("Keyboard", systemImage: "keyboard") {
                 KeyboardShortcutSettingView()
             }
+            
+            Tab("Menubar Extra",systemImage: "rectangle.topthird.inset.filled") {
+                MenubarSettingsView()
+            }
+            
         }
+        .frame(minWidth: 400, minHeight: 300)
     }
 }
 

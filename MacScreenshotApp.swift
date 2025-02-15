@@ -15,6 +15,7 @@ struct MacScreenshotApp: App {
      You can also use singleton or make a dataClass and put it into the environment
      */
     @State var vm = ScreenCaptureViewModel()
+    @AppStorage("menuBarExtraIsInserted") var menuBarExtraIsInserted = true
     var body: some Scene {
         /*
          - WindowGroup will allow user to open multiple window
@@ -23,6 +24,16 @@ struct MacScreenshotApp: App {
         WindowGroup {
             ContentView(vm: vm)
         }
+        
+        // Menubar
+        MenuBarExtra(
+            "Screenshots",
+            systemImage: "photo.badge.plus",
+            isInserted: $menuBarExtraIsInserted // Show & Hide menubar
+        ) {
+            MenubarView(vm: vm)
+        }
+        .menuBarExtraStyle(.window)
         
         // Set the setting View to the macOs setting btn in the bar
         Settings {

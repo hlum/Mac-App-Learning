@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B50CF65D2D603F5100D7341F /* MacScreenshotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50CF6542D603F5100D7341F /* MacScreenshotApp.swift */; };
 		B5E975442D5E709A00708E77 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = B5E975432D5E709A00708E77 /* KeyboardShortcuts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B50CF6542D603F5100D7341F /* MacScreenshotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacScreenshotApp.swift; sourceTree = "<group>"; };
 		B5E9752E2D5E637A00708E77 /* MacScreenshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacScreenshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -37,6 +39,7 @@
 		B5E975252D5E637A00708E77 = {
 			isa = PBXGroup;
 			children = (
+				B50CF6542D603F5100D7341F /* MacScreenshotApp.swift */,
 				B5E975302D5E637A00708E77 /* MacScreenshot */,
 				B5E9752F2D5E637A00708E77 /* Products */,
 			);
@@ -128,6 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50CF65D2D603F5100D7341F /* MacScreenshotApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

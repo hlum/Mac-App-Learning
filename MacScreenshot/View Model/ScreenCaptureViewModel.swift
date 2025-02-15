@@ -63,6 +63,17 @@ enum ScreenshotTypes {
     case window
     case area
     
+    var systemImage: String {
+        switch self {
+        case .full:
+            return "inset.filled.rectangle.and.person.filled"
+        case .window:
+            return "macwindow"
+        case .area:
+            return "macbook"
+        }
+    }
+    
     var description: String {
         switch self {
         case .full:
